@@ -7,5 +7,11 @@ tailwind.config = {
       xl: "1240px",
       "2xl": "1408px",
     },
+    extend: {
+      colors: {
+        primary: "#252525",
+        secondary: "#454545",
+      },
+    },
   },
 };

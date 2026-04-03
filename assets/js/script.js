@@ -41,3 +41,44 @@ if (sidebarOverlay) {
   sidebarOverlay.addEventListener("click", closeSidebar);
 }
 // End Mobile Sidebar Menu Logic
+
+// Slide Section-2
+const swiperSection2 = new Swiper(".swiper-section-2", {
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: 3,
+  loop: true,
+  speed: 1000,
+  autoplay: {
+    delay: 2000,
+    disableOnInteraction: false,
+  },
+  coverflowEffect: {
+    rotate: 40,
+    stretch: 0,
+    depth: 215,
+    modifier: 1,
+    slideShadows: true,
+  },
+  navigation: {
+    nextEl: ".swiper-section-2-next",
+    prevEl: ".swiper-section-2-prev",
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1.2,
+      coverflowEffect: {
+        rotate: 30,
+        depth: 100,
+      },
+    },
+    768: {
+      slidesPerView: 2.5,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+});
+// End Slide Section-2

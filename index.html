@@ -8,6 +8,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
@@ -190,8 +194,90 @@
     ></div>
     <!-- End Header -->
 
+    <!-- Section-1 -->
+    <section class="mt-[40px]">
+      <div class="container mx-auto px-[15px] relative">
+        <img
+          src="assets/images/bg-section-1.png"
+          alt=""
+          class="absolute top-[-140px] right-[230px] z-0"
+        />
+        <h1
+          class="text-[48px] font-bold text-primary text-center relative z-10"
+        >
+          <div class="max-w-[700px] mx-auto">Khám sức khỏe hậu Covid-19</div>
+          <div class="max-w-[803px] mx-auto">
+            Để chúng ta đều khỏe mạnh mỗi ngày
+          </div>
+        </h1>
+        <p
+          class="text-[14px] font-[400] text-secondary max-w-[895px] mx-auto text-center mt-[16px] relative z-10"
+        >
+          Bệnh Viện Đa Khoa Phương Đông là địa chỉ uy tín về khám chữa bệnh, với
+          đội ngũ chuyên gia - bác sĩ hàng đầu, trang thiết bị hiện đại, cùng
+          các phác đồ điều trị hiệu quả, khoa học mang đến dịch vụ khám, điều
+          trị, chăm sóc sức khỏe cao cấp, toàn diện với chi phí hợp lý.
+        </p>
+        <div class="text-center mt-[40px]">
+          <a
+            href="#"
+            class="text-[16px] font-bold text-white h-[46px] inline-flex justify-center items-center rounded-[40px] px-[31px] relative z-10"
+            style="
+              background: linear-gradient(135deg, #3eed8b 0%, #0a9949 100%);
+              box-shadow: 0px 8px 20px 0px #00e26466;
+            "
+            >Đăng ký tư vấn</a
+          >
+        </div>
+      </div>
+    </section>
+    <!-- End Section-1 -->
+
+    <!-- Section-2 -->
+    <section class="section-2 pt-[40px] pb-[60px] overflow-hidden">
+      <div class="container mx-auto px-[15px]">
+        <div class="relative group">
+          <div class="swiper swiper-section-2 !overflow-visible">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide card-slide">
+                <img src="assets/images/image1-section-2.png" alt="Doctor 1" />
+              </div>
+              <div class="swiper-slide card-slide">
+                <img src="assets/images/image2-section-2.png" alt="Doctor 2" />
+              </div>
+              <div class="swiper-slide card-slide">
+                <img src="assets/images/image3-section-2.png" alt="Doctor 3" />
+              </div>
+              <div class="swiper-slide card-slide">
+                <img src="assets/images/image4-section-2.png" alt="Doctor 4" />
+              </div>
+              <div class="swiper-slide card-slide">
+                <img src="assets/images/image5-section-2.png" alt="Doctor 5" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="flex justify-center items-center gap-x-[15px]">
+            <button
+              class="swiper-section-2-prev w-[60px] h-[60px] text-[22px] flex justify-center items-center rounded-full border-[2.5px] border-[#888888] text-[#888888]"
+            >
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button
+              class="swiper-section-2-next w-[60px] h-[60px] text-[22px] flex justify-center items-center rounded-full border-[2.5px] border-[#888888] text-[#888888]"
+            >
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Section-2 -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
