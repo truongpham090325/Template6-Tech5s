@@ -83,3 +83,33 @@ const swiperSection2 = new Swiper(".swiper-section-2", {
   },
 });
 // End Slide Section-2
+
+// Accordion Section-7
+document.addEventListener("DOMContentLoaded", function () {
+  const accordionItems = document.querySelectorAll(".accordion-item");
+
+  accordionItems.forEach((item) => {
+    const header = item.querySelector(".accordion-header");
+    const content = item.querySelector(".accordion-content");
+    const icon = item.querySelector(".accordion-icon");
+
+    header.addEventListener("click", () => {
+      const isActive = item.classList.contains("active");
+
+      if (!isActive) {
+        item.classList.add("active");
+        icon.classList.replace("fa-circle-plus", "fa-circle-minus");
+        content.style.height = content.scrollHeight + "px";
+        content.classList.remove("opacity-0");
+        content.classList.add("opacity-100", "mb-[4px]");
+      } else {
+        item.classList.remove("active");
+        icon.classList.replace("fa-circle-minus", "fa-circle-plus");
+        content.style.height = "0px";
+        content.classList.remove("opacity-100", "mb-[4px]");
+        content.classList.add("opacity-0");
+      }
+    });
+  });
+});
+// End Accordion Section-7
