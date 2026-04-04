@@ -48,6 +48,7 @@ const swiperSection2 = new Swiper(".swiper-section-2", {
   grabCursor: true,
   centeredSlides: true,
   slidesPerView: 3,
+  spaceBetween: 40,
   loop: true,
   speed: 1000,
   autoplay: {
