@@ -782,13 +782,15 @@
 
     <!-- Footer -->
     <footer
-      class="py-[80px] bg-[#0A9949] border-t-[5px] border-solid border-[#FFDA58]"
+      class="py-[80px] bg-[#0A9949] border-t-[5px] border-solid border-[#FFDA58] relative"
     >
-      <div class="container mx-auto px-[15px]">
-        <div class="flex flex-wrap gap-x-[64px]">
-          <div class="w-[45%]">
+      <div class="container mx-auto px-[15px] relative z-10">
+        <div class="flex flex-col-reverse xl:flex-row flex-wrap gap-y-[40px] xl:gap-x-[64px] xl:gap-y-0 text-center xl:text-left">
+          <div class="w-full xl:w-[45%] pt-0 xl:pt-[20px]">
             <div class="mb-[24px]">
-              <img src="assets/images/logo-footer.png" alt="" />
+              <a href="index.html" class="inline-block">
+                <img src="assets/images/logo-footer.png" alt="" class="mx-auto xl:mx-0" />
+              </a>
             </div>
             <div class="text-[20px] font-bold text-white mb-[16px]">
               BỆNH VIỆN ĐA KHOA PHƯƠNG ĐÔNG
@@ -805,7 +807,7 @@
               <b class="font-bold">Hotline:</b>
               <a href="#">1900 1806</a>
             </div>
-            <nav class="mt-[32px]">
+            <nav class="mt-[32px] flex justify-center xl:justify-start">
               <ul class="inline-flex gap-x-[32px]">
                 <li>
                   <a href="#">
@@ -829,12 +831,12 @@
                 </li>
               </ul>
             </nav>
-            <div class="flex justify-between mt-[56px]">
-              <div class="w-[42%]">
+            <div class="flex flex-col sm:flex-row justify-center xl:justify-between mt-[40px] gap-y-[24px] sm:gap-y-0 gap-x-[20px] xl:gap-x-0">
+              <div class="w-full sm:w-auto">
                 <div class="text-[20px] font-bold text-white mb-[16px]">
                   Thời gian mở cửa
                 </div>
-                <div class="flex gap-x-[30px] mb-[12px]">
+                <div class="flex justify-center xl:justify-start gap-x-[30px] mb-[12px]">
                   <span class="text-[18px] font-[400] text-white"
                     >Thứ2-Chủ nhật:</span
                   >
@@ -842,7 +844,7 @@
                     >7:30-19:00</span
                   >
                 </div>
-                <div class="flex gap-x-[30px]">
+                <div class="flex justify-center xl:justify-start gap-x-[30px]">
                   <span class="text-[18px] font-[400] text-white"
                     >Cấp cứu 24/7:</span
                   >
@@ -852,32 +854,118 @@
                 </div>
               </div>
 
-              <div class="w-[49%]">
+              <div class="w-full sm:w-auto">
                 <div class="text-[20px] font-bold text-white mb-[16px]">
                   Liên hệ
                 </div>
-                <div class="flex gap-x-[30px] mb-[12px]">
+                <div class="flex justify-center xl:justify-start gap-x-[30px] mb-[12px]">
                   <span class="text-[18px] font-[400] text-white"
                     >Hotline Tiêm chủng:</span
                   >
-                  <span class="text-[18px] font-[400] text-white"
-                    >0911 615 115</span
+                  <span class="text-[18px] text-white"
+                    ><a href="#" class="font-[400]">0911 615 115</a></span
                   >
                 </div>
-                <div class="flex gap-x-[30px]">
+                <div class="flex justify-center xl:justify-start gap-x-[30px]">
                   <span class="text-[18px] font-[400] text-white"
                     >Hotline khoa sản:</span
                   >
-                  <span class="text-[18px] font-[400] text-white"
-                    >0911 615 115</span
+                  <span class="text-[18px] text-white"
+                    ><a href="#" class="font-[400]">0911 615 115</a></span
                   >
                 </div>
               </div>
             </div>
           </div>
-          <div class="w-[63%]"></div>
+          <div class="w-full xl:w-[50%]">
+            <form
+              class="rounded-[15px] bg-white"
+              style="box-shadow: 8px 12px 64px 0px #0000000f"
+              action="#"
+              id="form-register"
+            >
+              <div
+                class="rounded-tl-[15px] rounded-tr-[15px] py-[18px]"
+                style="
+                  background: linear-gradient(135deg, #3eed8b 0%, #0a9949 100%);
+                "
+              >
+                <div
+                  class="text-white text-[20px] font-bold text-center mb-[4px]"
+                >
+                  ĐĂNG KÝ TƯ VẤN MIỄN PHÍ
+                </div>
+                <div class="text-[14px] text-white font-[600] text-center">
+                  Đặt hẹn ngay để nhận tư vấn và chúng tôi sẽ xếp lịch khám kịp
+                  thời!
+                </div>
+              </div>
+              <div class="px-[37px] pt-[32px] pb-[42px]">
+                <div class="grid grid-cols-1">
+                  <input
+                    type="text"
+                    required
+                    class="bg-[#F5F5F5] border border-transparent focus:border-[#0a9949] focus:bg-white h-[46px] rounded-[5px] outline-none py-[13px] pl-[18px] mb-[16px] placeholder:text-[16px] placeholder:font-[400] placeholder:text-[#888888] transition-all duration-300"
+                    placeholder="Họ và tên (*)"
+                  />
+                </div>
+
+                <div class="grid grid-cols-1">
+                  <input
+                    type="text"
+                    required
+                    class="bg-[#F5F5F5] border border-transparent focus:border-[#0a9949] focus:bg-white h-[46px] rounded-[5px] outline-none py-[13px] pl-[18px] mb-[16px] placeholder:text-[16px] placeholder:font-[400] placeholder:text-[#888888] transition-all duration-300"
+                    placeholder="Số điện thoại (*)"
+                  />
+                </div>
+
+                <div class="grid grid-cols-1">
+                  <input
+                    type="email"
+                    class="bg-[#F5F5F5] border border-transparent focus:border-[#0a9949] focus:bg-white h-[46px] rounded-[5px] outline-none py-[13px] pl-[18px] mb-[16px] placeholder:text-[16px] placeholder:font-[400] placeholder:text-[#888888] transition-all duration-300"
+                    placeholder="E-mail"
+                  />
+                </div>
+
+                <div class="grid grid-cols-1">
+                  <textarea
+                    class="bg-[#F5F5F5] border border-transparent focus:border-[#0a9949] focus:bg-white h-[80px] rounded-[5px] outline-none py-[13px] pl-[18px] mb-[32px] placeholder:text-[16px] placeholder:font-[400] placeholder:text-[#888888] transition-all duration-300"
+                    placeholder="Nội dung..."
+                  ></textarea>
+                </div>
+
+                <div class="flex justify-center">
+                  <button
+                    class="h-[46px] rounded-[23px] inline-flex items-center gap-x-[8px] px-[24px] hover:scale-105 hover:shadow-[0px_10px_20px_0px_#35df8088] transition-all duration-300"
+                    style="
+                      background: linear-gradient(
+                        135deg,
+                        #3eed8b 0%,
+                        #0a9949 100%
+                      );
+                      box-shadow: 0px 8px 16px 0px #35df8066;
+                    "
+                  >
+                    <img
+                      src="assets/images/send-footer.png"
+                      class="w-[24px] h-[24px]"
+                      alt=""
+                    />
+                    <span class="text-[16px] text-white font-bold"
+                      >ĐĂNG KÝ TƯ VẤN</span
+                    >
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
+      <img
+        src="assets/images/bg-footer.png"
+        class="absolute bottom-0 z-0"
+        alt=""
+      />
     </footer>
     <!-- End Footer -->
 
