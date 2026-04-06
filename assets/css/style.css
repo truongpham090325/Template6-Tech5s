@@ -193,3 +193,25 @@
     100% 100%;
 }
 /* End Section-6 */
+
+/* Footer Social Icons Hover */
+.social-icons li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-icons li a:hover {
+  transform: translateY(-8px) scale(1.15);
+  filter: drop-shadow(0 5px 15px rgba(255, 255, 255, 0.4));
+}
+
+.social-icons li a img {
+  transition: all 0.3s ease;
+}
+
+.social-icons li a:hover img {
+  filter: brightness(1.1);
+}
+/* End Footer social icons hover */
