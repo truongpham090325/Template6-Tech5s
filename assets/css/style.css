@@ -83,6 +83,20 @@
   font-family: "Lato", sans-serif;
 }
 
+/* Header */
+.header {
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  background-color: aqua !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+/* End Header */
+
 /* Section-2 3D Slider */
 .section-2 .swiper {
   padding-bottom: 20px;
