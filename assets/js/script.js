@@ -157,8 +157,134 @@ if (clockExpire) {
 
   // Gọi ngay lần đầu tiên để tránh bị trễ 1 giây
   updateClock();
-  
+
   // Gọi hàm cập nhật đồng hồ mỗi giây
   const intervalClock = setInterval(updateClock, 1000);
 }
 // End Clock Expire
+
+// Section-6 Testimonial Logic
+document.addEventListener("DOMContentLoaded", function () {
+  const testimonials = [
+    {
+      image: "assets/images/client-1.png",
+      name: "Nguyễn Minh Ánh",
+      stars: 5,
+      desc: "Bệnh viện Phương Đông mang đến cho tôi cảm giác vô cùng bình yên và an tâm khi thăm khám tại đây!",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit nulla etiam sed consequat dictumst viverra molestie tortor feugiat. Purus consequat, sapien diam nec. Egestas lacinia scelerisque ultrices vivamus adipiscing diam massa phasellus diam. Sit mi at nibh amet, suscipit dui ornare cursus duis.",
+    },
+    {
+      image: "assets/images/client-2.png",
+      name: "Vũ Thị Yến",
+      stars: 4,
+      desc: "Chất lượng dịch vụ tuyệt vời, bác sĩ tận tình và chu đáo.",
+      content:
+        "Tôi rất hài lòng với trải nghiệm tại Bệnh viện Phương Đông. Cơ sở vật chất hiện đại, sạch sẽ. Đội ngũ y bác sĩ luôn lắng nghe và giải đáp mọi thắc mắc của tôi một cách rõ ràng. Tôi sẽ giới thiệu cho người thân và bạn bè.",
+    },
+    {
+      image: "assets/images/client-3.png",
+      name: "Phạm Quang Trường",
+      stars: 5,
+      desc: "Điều trị hậu Covid ở đây rất an tâm. Sức khỏe tôi phục hồi nhanh chóng.",
+      content:
+        "Sau khi chữa khỏi Covid, tôi gặp nhiều vấn đề về hô hấp. Nhờ gói khám và điều trị hậu Covid tại bệnh viện, tôi đã hồi phục hoàn toàn. Cảm ơn các y bác sĩ rất nhiều!",
+    },
+    {
+      image: "assets/images/client-4.png",
+      name: "Phạm Hữu Đạt",
+      stars: 5,
+      desc: "Quy trình thăm khám chuyên nghiệp, không phải chờ đợi lâu.",
+      content:
+        "Mình rất ấn tượng với phong cách làm việc của bệnh viện. Mọi thứ từ đăng ký đến lúc nhận kết quả đều rất trơn tru và nhanh gọn. Bác sĩ tư vấn cực kỳ kỹ lưỡng và có tâm. Chắc chắn sẽ quay lại khi cần thiết.",
+    },
+    {
+      image: "assets/images/client-5.png",
+      name: "Hoàng Mai Trang",
+      stars: 4,
+      desc: "Nhân viên y tế thân thiện, hướng dẫn cực kỳ nhiệt tình.",
+      content:
+        "Lần đầu đến thăm khám, tôi hơi bỡ ngỡ nhưng được các bạn điều dưỡng hướng dẫn từng bước rất chu đáo. Không gian bệnh viện thoáng đãng, nhiều cây xanh nên cảm giác thoải mái hơn hẳn.",
+    },
+    {
+      image: "assets/images/client-6.png",
+      name: "Nguyễn Thị Hồng",
+      stars: 5,
+      desc: "Trang thiết bị y tế cực kỳ hiện đại, bác sĩ chuyên môn cao.",
+      content:
+        "Sau nhiều nơi thăm khám, tôi quyết định chọn Phương Đông. Phải nói là tôi thực sự hài lòng về cả cơ sở vật chất lẫn trình độ của y bác sĩ. Cảm giác rất đáng tin cậy. Dịch vụ quá xuất sắc!",
+    },
+  ];
+
+  const centerAvatar = document.querySelector(".section-6-avatar");
+  const centerName = document.querySelector(".section-6-name");
+  const centerStars = document.querySelector(".section-6-stars");
+  const centerDesc = document.querySelector(".section-6-desc");
+  const centerContent = document.querySelector(".section-6-content");
+
+  const clientImages = document.querySelectorAll(".section-6-client");
+
+  clientImages.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      const data = testimonials[index];
+      if (data && centerAvatar && centerName && centerDesc && centerContent) {
+        // Apply fade out effect
+        const elementsToFade = [
+          centerAvatar,
+          centerName,
+          centerStars,
+          centerDesc,
+          centerContent,
+        ];
+
+        elementsToFade.forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transition = "opacity 0.3s ease";
+        });
+
+        setTimeout(() => {
+          centerAvatar.src = data.image;
+          centerName.innerText = data.name;
+          centerDesc.innerText = data.desc;
+          centerContent.innerText = data.content;
+
+          // Render stars
+          centerStars.innerHTML = "";
+          // Because star-section-6.png is already a 5-star image, we just need to show it once
+          // or render dynamic stars based on data.stars. Let's render dynamic FontAwesome stars
+          // so it can accurately reflect 1 to 5 stars.
+          if (data.stars) {
+            centerStars.className =
+              "flex justify-center gap-x-[4px] section-6-stars"; // add some gap
+            for (let i = 1; i <= 5; i++) {
+              const starIcon = document.createElement("i");
+              if (i <= data.stars) {
+                starIcon.className =
+                  "fa-solid fa-star text-[#FFC107] text-[18px]";
+              } else {
+                starIcon.className =
+                  "fa-regular fa-star text-[#FFC107] text-[18px]";
+              }
+              centerStars.appendChild(starIcon);
+            }
+          } else {
+            // Fallback
+            const starImg = document.createElement("img");
+            starImg.src = "assets/images/star-section-6.png";
+            starImg.alt = "star";
+            centerStars.appendChild(starImg);
+          }
+
+          // Apply fade in effect
+          elementsToFade.forEach((el) => (el.style.opacity = "1"));
+        }, 300);
+      }
+    });
+  });
+
+  // Initialize the first item to render correct stars on load
+  if (clientImages.length > 0) {
+    clientImages[0].click();
+  }
+});
+// End Section-6 Testimonial Logic
