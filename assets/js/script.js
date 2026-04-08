@@ -288,3 +288,134 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 // End Section-6 Testimonial Logic
+
+// Section-5 Doctor Slider Logic
+document.addEventListener("DOMContentLoaded", function () {
+  const doctors = [
+    {
+      name: "Bác sĩ Nguyễn Trung Chính",
+      position: "PGS.TS. Bác sĩ Ung bướu",
+      desc: "PGS.TS. Bác sĩ Nguyễn Trung Chính - Nguyên Chủ nhiệm khoa và phụ trách trung tâm tế bào gốc Bệnh viện TW Quân đội 108 là chuyên gia có gần 40 năm kinh nghiệm trong lĩnh Ung bướu và Tế bào gốc. PGS.TS Nguyễn Trung Chính đã giúp hàng nghìn bệnh nhân trên cả nước chẩn đoán và điều trị các vấn đề về ung bướu; thực hiện thành công nhiều kĩ thuật khó trong lĩnh vực tế bào gốc.",
+      rating: "4.8/5 (38 bình chọn)",
+      image: "assets/images/image-section-5.png",
+    },
+    {
+      name: "Bác sĩ Trần Đức Minh",
+      position: "Tiến sĩ. Bác sĩ Tim mạch",
+      desc: "TS.BS Trần Đức Minh là chuyên gia hàng đầu về tim mạch, với hơn 30 năm kinh nghiệm. Bác sĩ đã thực hiện thành công hàng nghìn ca phẫu thuật, mang lại cuộc sống mới cho các bệnh nhân mắc bệnh lý tim mạch phức tạp.",
+      rating: "4.9/5 (56 bình chọn)",
+      image: "assets/images/image-section-5.png",
+    },
+    {
+      name: "Bác sĩ Lê Thu Hà",
+      position: "Thạc sĩ. Bác sĩ Nội tiết",
+      desc: "Thạc sĩ Lê Thu Hà chuyên điều trị các bệnh lý nội tiết, đặc biệt là đái tháo đường và tuyến giáp. Phương pháp điều trị của bác sĩ chú trọng vào việc cá thể hóa, mang lại hiệu quả rõ rệt cho bệnh nhân.",
+      rating: "4.7/5 (24 bình chọn)",
+      image: "assets/images/image-section-5.png",
+    },
+    {
+      name: "Bác sĩ Phạm Hoàng Long",
+      position: "Bác sĩ CKII Hô hấp",
+      desc: "Bác sĩ Phạm Hoàng Long có nhiều năm tu nghiệp ở nước ngoài và hiện là một trong những bác sĩ Hô hấp uy tín nhất. Ông chuyên chẩn đoán, điều trị các bệnh phổi tắc nghẽn, hen suyễn, bệnh lý hô hấp phức tạp.",
+      rating: "4.9/5 (62 bình chọn)",
+      image: "assets/images/image-section-5.png",
+    },
+    {
+      name: "Bác sĩ Nguyễn Thanh Trúc",
+      position: "Thạc sĩ. Bác sĩ Nhi khoa",
+      desc: "Với tình yêu thương trẻ nhỏ và chuyên môn cao, Thạc sĩ Nguyễn Thanh Trúc luôn tận tâm chăm sóc sức khỏe cho các bé. Bác sĩ luôn là lựa chọn hàng đầu của nhiều bậc phụ huynh khi con gặp vấn đề sức khỏe.",
+      rating: "4.8/5 (41 bình chọn)",
+      image: "assets/images/image-section-5.png",
+    },
+    {
+      name: "Bác sĩ Đặng Quang Huy",
+      position: "Tiến sĩ. Bác sĩ Thần kinh",
+      desc: "TS.BS Đặng Quang Huy chuyên gia với hơn 20 năm kinh nghiệm trong khoa Thần kinh. Ông chẩn đoán và điều trị xuất sắc các bệnh lý như đau đầu mãn tính, rối loạn tiền đình, Parkinson và tai biến mạch máu não.",
+      rating: "4.9/5 (73 bình chọn)",
+      image: "assets/images/image-section-5.png",
+    },
+  ];
+
+  const sec5Img = document.getElementById("sec5-img");
+  const sec5Rating = document.getElementById("sec5-rating");
+  const sec5Name = document.getElementById("sec5-name");
+  const sec5Position = document.getElementById("sec5-position");
+  const sec5Desc = document.getElementById("sec5-desc");
+  const sec5Prev = document.getElementById("sec5-btn-prev");
+  const sec5Next = document.getElementById("sec5-btn-next");
+  const sec5CurrentPage = document.getElementById("sec5-current-page");
+
+  let currentDoctorIndex = 0;
+
+  function updateArrows() {
+    if (sec5Prev) {
+      if (currentDoctorIndex === 0) {
+        sec5Prev.style.opacity = "0.5";
+        sec5Prev.style.cursor = "default";
+      } else {
+        sec5Prev.style.opacity = "1";
+        sec5Prev.style.cursor = "pointer";
+      }
+    }
+    
+    if (sec5Next) {
+      if (currentDoctorIndex === doctors.length - 1) {
+        sec5Next.style.opacity = "0.5";
+        sec5Next.style.cursor = "default";
+      } else {
+        sec5Next.style.opacity = "1";
+        sec5Next.style.cursor = "pointer";
+      }
+    }
+  }
+
+  function updateDoctorInfo(index) {
+    const data = doctors[index];
+    if (!data) return;
+
+    // Apply fade out effect
+    const elements = [sec5Img, sec5Rating, sec5Name, sec5Position, sec5Desc, sec5CurrentPage];
+    
+    elements.forEach(el => {
+      if(el) {
+        el.style.opacity = "0";
+        el.style.transition = "opacity 0.3s ease";
+      }
+    });
+
+    setTimeout(() => {
+      if(sec5Img) sec5Img.src = data.image;
+      if(sec5Rating) sec5Rating.innerText = data.rating;
+      if(sec5Name) sec5Name.innerText = data.name;
+      if(sec5Position) sec5Position.innerText = data.position;
+      if(sec5Desc) sec5Desc.innerText = data.desc;
+      if(sec5CurrentPage) sec5CurrentPage.innerText = index + 1;
+
+      // Apply fade in effect
+      elements.forEach(el => {
+        if(el) el.style.opacity = "1";
+      });
+      
+      updateArrows();
+    }, 300);
+  }
+
+  if (sec5Prev && sec5Next) {
+    updateArrows(); // Init correct state
+    
+    sec5Prev.addEventListener("click", () => {
+      if (currentDoctorIndex > 0) {
+        currentDoctorIndex--;
+        updateDoctorInfo(currentDoctorIndex);
+      }
+    });
+
+    sec5Next.addEventListener("click", () => {
+      if (currentDoctorIndex < doctors.length - 1) {
+        currentDoctorIndex++;
+        updateDoctorInfo(currentDoctorIndex);
+      }
+    });
+  }
+});
+// End Section-5 Doctor Slider Logic
