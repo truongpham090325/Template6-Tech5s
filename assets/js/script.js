@@ -42,48 +42,6 @@ if (sidebarOverlay) {
 }
 // End Mobile Sidebar Menu Logic
 
-// Slide Section-2
-const swiperSection2 = new Swiper(".swiper-section-2", {
-  effect: "coverflow",
-  grabCursor: true,
-  centeredSlides: true,
-  slidesPerView: 3,
-  spaceBetween: 40,
-  loop: true,
-  speed: 1000,
-  autoplay: {
-    delay: 2000,
-    disableOnInteraction: false,
-  },
-  coverflowEffect: {
-    rotate: 40,
-    stretch: 0,
-    depth: 215,
-    modifier: 1,
-    slideShadows: true,
-  },
-  navigation: {
-    nextEl: ".swiper-section-2-next",
-    prevEl: ".swiper-section-2-prev",
-  },
-  breakpoints: {
-    320: {
-      slidesPerView: 1.2,
-      coverflowEffect: {
-        rotate: 30,
-        depth: 100,
-      },
-    },
-    768: {
-      slidesPerView: 2.5,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
-});
-// End Slide Section-2
-
 // Accordion Section-7
 document.addEventListener("DOMContentLoaded", function () {
   const accordionItems = document.querySelectorAll(".accordion-item");
@@ -357,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
         sec5Prev.style.cursor = "pointer";
       }
     }
-    
+
     if (sec5Next) {
       if (currentDoctorIndex === doctors.length - 1) {
         sec5Next.style.opacity = "0.5";
@@ -374,35 +332,42 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!data) return;
 
     // Apply fade out effect
-    const elements = [sec5Img, sec5Rating, sec5Name, sec5Position, sec5Desc, sec5CurrentPage];
-    
-    elements.forEach(el => {
-      if(el) {
+    const elements = [
+      sec5Img,
+      sec5Rating,
+      sec5Name,
+      sec5Position,
+      sec5Desc,
+      sec5CurrentPage,
+    ];
+
+    elements.forEach((el) => {
+      if (el) {
         el.style.opacity = "0";
         el.style.transition = "opacity 0.3s ease";
       }
     });
 
     setTimeout(() => {
-      if(sec5Img) sec5Img.src = data.image;
-      if(sec5Rating) sec5Rating.innerText = data.rating;
-      if(sec5Name) sec5Name.innerText = data.name;
-      if(sec5Position) sec5Position.innerText = data.position;
-      if(sec5Desc) sec5Desc.innerText = data.desc;
-      if(sec5CurrentPage) sec5CurrentPage.innerText = index + 1;
+      if (sec5Img) sec5Img.src = data.image;
+      if (sec5Rating) sec5Rating.innerText = data.rating;
+      if (sec5Name) sec5Name.innerText = data.name;
+      if (sec5Position) sec5Position.innerText = data.position;
+      if (sec5Desc) sec5Desc.innerText = data.desc;
+      if (sec5CurrentPage) sec5CurrentPage.innerText = index + 1;
 
       // Apply fade in effect
-      elements.forEach(el => {
-        if(el) el.style.opacity = "1";
+      elements.forEach((el) => {
+        if (el) el.style.opacity = "1";
       });
-      
+
       updateArrows();
     }, 300);
   }
 
   if (sec5Prev && sec5Next) {
     updateArrows(); // Init correct state
-    
+
     sec5Prev.addEventListener("click", () => {
       if (currentDoctorIndex > 0) {
         currentDoctorIndex--;
@@ -419,3 +384,143 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 // End Section-5 Doctor Slider Logic
+
+// Section-2 3D Slider Logic
+document.addEventListener("DOMContentLoaded", function () {
+  const stage = document.querySelector("#section-2");
+  if (!stage) return;
+  
+  const ring = document.querySelector("#section-2 .ring");
+  const imgs = document.querySelectorAll("#section-2 .img-3d");
+  const prevBtn = document.getElementById("sec2-prev");
+  const nextBtn = document.getElementById("sec2-next");
+  
+  if (!ring || imgs.length === 0) return;
+
+  const numImgs = imgs.length;
+  const angle = 360 / numImgs;
+  
+  // Calculate radius based on the actual width of the container
+  const itemWidth = ring.offsetWidth;
+  const gap = 40; // 40px gap between images
+  const radius = Math.round(((itemWidth + gap) / 2) / Math.tan(Math.PI / numImgs)); 
+  
+  gsap.set(ring, { rotationY: 0 });
+
+  imgs.forEach((img, i) => {
+    gsap.set(img, {
+      rotateY: i * -angle,
+      transformOrigin: `50% 50% ${radius}px`,
+      z: -radius,
+      backfaceVisibility: "hidden"
+    });
+  });
+
+  gsap.from(imgs, {
+    duration: 1.5,
+    y: 200,
+    opacity: 0,
+    stagger: 0.1,
+    ease: "expo",
+  });
+
+  const imageUrls = [
+    "assets/images/image1-section-2.png",
+    "assets/images/image2-section-2.png", // The original had 5 images
+    "assets/images/image3-section-2.png",
+    "assets/images/image4-section-2.png",
+    "assets/images/image5-section-2.png",
+    "assets/images/image1-section-2.png",
+    "assets/images/image2-section-2.png",
+    "assets/images/image3-section-2.png",
+    "assets/images/image4-section-2.png",
+    "assets/images/image5-section-2.png"
+  ];
+
+  imgs.forEach((img, i) => {
+    gsap.set(img, {
+      backgroundImage: `url(${imageUrls[i]})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover'
+    });
+    
+    img.addEventListener("mouseenter", (e) => {
+      let current = e.currentTarget;
+      gsap.to(imgs, {
+        opacity: (idx, target) => (target === current ? 1 : 0.5),
+        ease: "power3",
+      });
+    });
+
+    img.addEventListener("mouseleave", (e) => {
+      gsap.to(imgs, { opacity: 1, ease: "power2.inOut" });
+    });
+  });
+  
+  let xPos = 0;
+  
+  function dragStart(e) {
+    if (e.touches && e.touches.length > 0) e.clientX = e.touches[0].clientX;
+    else if (e.clientX === undefined) return;
+    xPos = Math.round(e.clientX);
+    document.addEventListener("mousemove", drag);
+    document.addEventListener("touchmove", drag);
+    document.addEventListener("mouseup", dragEnd);
+    document.addEventListener("touchend", dragEnd);
+  }
+
+  function drag(e) {
+    let clientX = e.clientX;
+    if (e.touches && e.touches.length > 0) clientX = e.touches[0].clientX;
+    if (clientX === undefined) return;
+    
+    gsap.to(ring, {
+      rotationY: "-=" + ((Math.round(clientX) - xPos) % 360),
+    });
+
+    xPos = Math.round(clientX);
+  }
+
+  function dragEnd(e) {
+    document.removeEventListener("mousemove", drag);
+    document.removeEventListener("touchmove", drag);
+    document.removeEventListener("mouseup", dragEnd);
+    document.removeEventListener("touchend", dragEnd);
+  }
+  
+  stage.addEventListener("mousedown", dragStart);
+  stage.addEventListener("touchstart", dragStart);
+
+  if(prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      let currentRotation = gsap.getProperty(ring, "rotationY");
+      gsap.to(ring, { 
+        rotationY: currentRotation + angle, 
+        duration: 0.5
+      });
+    });
+  }
+  if(nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      let currentRotation = gsap.getProperty(ring, "rotationY");
+      gsap.to(ring, { 
+        rotationY: currentRotation - angle, 
+        duration: 0.5
+      });
+    });
+  }
+  
+  // Re-adjust radius on window resize
+  window.addEventListener('resize', () => {
+    const newItemWidth = ring.offsetWidth;
+    const newRadius = Math.round(((newItemWidth + gap) / 2) / Math.tan(Math.PI / numImgs)); 
+    
+    imgs.forEach(img => {
+      gsap.set(img, {
+        transformOrigin: `50% 50% ${newRadius}px`,
+        z: -newRadius,
+      });
+    });
+  });
+});
+// End Section-2 3D Slider Logic

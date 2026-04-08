@@ -231,42 +231,60 @@
     <!-- End Section-1 -->
 
     <!-- Section-2 -->
-    <section class="section-2 pt-[40px] pb-[60px] overflow-hidden">
-      <div class="container mx-auto px-[15px]">
-        <div class="relative group">
-          <div class="swiper swiper-section-2 !overflow-visible">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide card-slide">
-                <img src="assets/images/image1-section-2.png" alt="Doctor 1" />
-              </div>
-              <div class="swiper-slide card-slide">
-                <img src="assets/images/image2-section-2.png" alt="Doctor 2" />
-              </div>
-              <div class="swiper-slide card-slide">
-                <img src="assets/images/image3-section-2.png" alt="Doctor 3" />
-              </div>
-              <div class="swiper-slide card-slide">
-                <img src="assets/images/image4-section-2.png" alt="Doctor 4" />
-              </div>
-              <div class="swiper-slide card-slide">
-                <img src="assets/images/image5-section-2.png" alt="Doctor 5" />
-              </div>
-            </div>
-          </div>
-
-          <!-- Navigation Buttons -->
-          <div class="flex justify-center items-center gap-x-[20px]">
-            <button
-              class="swiper-section-2-prev w-[50px] h-[50px] text-[22px] flex justify-center items-center rounded-full border-[2.5px] border-[#888888] text-[#888888]"
-            >
-              <i class="fa-solid fa-arrow-left"></i>
-            </button>
-            <button
-              class="swiper-section-2-next w-[50px] h-[50px] text-[22px] flex justify-center items-center rounded-full border-[2.5px] border-[#888888] text-[#888888]"
-            >
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </div>
+    <section
+      class="stage mt-[25px] relative h-[450px] md:h-[600px] overflow-hidden"
+      id="section-2"
+    >
+      <div
+        class="container-3d absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-[280px] h-[320px] md:w-[450px] md:h-[450px]"
+      >
+        <div class="ring w-full h-full">
+          <div
+            class="img-3d w-full h-full rounded-[15px] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          ></div>
+          <div
+            class="img-3d w-full h-full rounded-[15px] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          ></div>
+          <div
+            class="img-3d w-full h-full rounded-[15px] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          ></div>
+          <div
+            class="img-3d w-full h-full rounded-[15px] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          ></div>
+          <div
+            class="img-3d w-full h-full rounded-[15px] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          ></div>
+          <div
+            class="img-3d w-full h-full rounded-[15px] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          ></div>
+          <div
+            class="img-3d w-full h-full rounded-[15px] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          ></div>
+          <div
+            class="img-3d w-full h-full rounded-[15px] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          ></div>
+          <div
+            class="img-3d w-full h-full rounded-[15px] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          ></div>
+          <div
+            class="img-3d w-full h-full rounded-[15px] shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+          ></div>
+        </div>
+      </div>
+      <div
+        class="flex justify-center gap-x-[24px] absolute bottom-0 left-1/2 -translate-x-1/2 pb-[20px] z-[50]"
+      >
+        <div
+          id="sec2-prev"
+          class="w-[60px] h-[60px] inline-flex justify-center items-center text-[25px] rounded-[50%] text-[#888888] border-[2.5px] border-solid border-[#888888] cursor-pointer transition-all bg-white z-[51]"
+        >
+          <i class="fa-solid fa-arrow-left"></i>
+        </div>
+        <div
+          id="sec2-next"
+          class="w-[60px] h-[60px] inline-flex justify-center items-center text-[25px] rounded-[50%] text-[#888888] border-[2.5px] border-solid border-[#888888] cursor-pointer transition-all bg-white z-[51]"
+        >
+          <i class="fa-solid fa-arrow-right"></i>
         </div>
       </div>
     </section>
@@ -1446,6 +1464,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
