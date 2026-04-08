@@ -560,42 +560,82 @@
     <!-- End Section-4 -->
 
     <!-- Section-5 -->
-    <section class="relative">
+    <section class="relative py-[20px] lg:py-0">
       <div class="container mx-auto px-[15px]">
-        <div class="flex gap-x-[89px]">
-          <div class="w-[40%] relative">
+        <div
+          class="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-0 lg:gap-x-[89px]"
+        >
+          <!-- MOBILE TOP TEXT (Text 1) -->
+          <div class="w-full block lg:hidden">
+            <div class="inline-flex items-center gap-x-[8px]">
+              <span
+                class="text-[14px] font-[400] bg-gradient-to-br from-[#3EED8B] to-[#0A9949] bg-clip-text text-transparent"
+                >ĐỘI NGŨ</span
+              >
+              <img src="assets/images/line-section-3.png" alt="" />
+            </div>
+            <h2
+              class="mt-[8px] text-[28px] md:text-[38px] text-primary font-bold"
+            >
+              Đội ngũ bác sĩ của chúng tôi là những người giàu kinh nghiệm, giàu
+              nhiệt huyết
+            </h2>
+            <div
+              class="text-[16px] font-[400] text-secondary mt-[16px] leading-relaxed"
+            >
+              Đội ngũ bác sĩ Tim mạch, Hô hấp, Nội khoa, Nhi Khoa, Thần kinh,
+              Vật lý trị liệu giàu kinh nghiệm. Với hơn 40 năm kinh nghiệm trong
+              lĩnh vực Nội khoa, thực hiện thăm khám và trực tiếp điều trị cho
+              hàng nghìn bệnh nhân.
+            </div>
+          </div>
+
+          <!-- IMAGE (Left col on Desktop, middle on Mobile) -->
+          <div
+            class="w-full lg:w-[40%] relative mt-[20px] lg:mt-0 flex justify-center lg:block"
+          >
             <img
               src="assets/images/bg2-section-6.png"
-              class="absolute top-[-80px] left-[50px] -z-10"
+              class="absolute top-[-80px] left-[50px] -z-10 hidden lg:block"
               alt=""
             />
             <img
               src="assets/images/star-section-5.png"
-              class="absolute top-0"
+              class="absolute top-0 hidden lg:block"
               alt=""
             />
             <img
               src="assets/images/like-section-5.png"
-              class="absolute right-[-80px] top-[120px]"
+              class="absolute right-[-80px] top-[120px] hidden lg:block"
               alt=""
             />
-            <img id="sec5-img" src="assets/images/image-section-5.png" alt="" />
-            <div
-              class="absolute bottom-[-35px] left-[30px] rounded-[10px] bg-white w-[213px] h-[73px] pl-[28px] py-[14px]"
-              style="box-shadow: 6px 8px 40px 0px #00000014"
-            >
-              <div class="mb-[5px]">
-                <img src="assets/images/list-star-section-5.png" alt="" />
-              </div>
-              <span
-                id="sec5-rating"
-                class="text-[15px] font-[400] text-secondary"
-                >4.8/5 (38 bình chọn)</span
+            <div class="relative max-w-full">
+              <img
+                id="sec5-img"
+                class="max-w-full"
+                src="assets/images/image-section-5.png"
+                alt=""
+              />
+              <div
+                class="absolute bottom-[0] lg:bottom-[-35px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-[30px] rounded-[10px] bg-white w-[213px] h-[73px] pl-[28px] py-[14px]"
+                style="box-shadow: 6px 8px 40px 0px #00000014"
               >
+                <div class="mb-[5px]">
+                  <img src="assets/images/list-star-section-5.png" alt="" />
+                </div>
+                <span
+                  id="sec5-rating"
+                  class="text-[15px] font-[400] text-secondary"
+                  >4.8/5 (38 bình chọn)</span
+                >
+              </div>
             </div>
           </div>
-          <div class="w-[56%]">
-            <div class="pt-[50px] mb-[60px]">
+
+          <!-- RIGHT COLUMN (Contains Top text on Desktop, Bottom text on both) -->
+          <div class="w-full lg:w-[56%] mt-[40px] lg:mt-0">
+            <!-- DESKTOP TOP TEXT (Text 1) -->
+            <div class="hidden lg:block pt-[50px] xl:mb-[60px] mb-[20px]">
               <div class="inline-flex items-center gap-x-[8px]">
                 <span
                   class="text-[14px] font-[400] bg-gradient-to-br from-[#3EED8B] to-[#0A9949] bg-clip-text text-transparent"
@@ -618,21 +658,23 @@
                 trị cho hàng nghìn bệnh nhân.
               </div>
             </div>
+
+            <!-- DOCTOR INFO -->
             <div
               id="sec5-name"
-              class="text-[30px] font-[600] text-white mb-[12px]"
+              class="text-[24px] lg:text-[30px] font-[600] text-primary 2xl:text-white mb-[8px] lg:mb-[12px]"
             >
               Bác sĩ Nguyễn Trung Chính
             </div>
             <div
               id="sec5-position"
-              class="text-[16px] font-bold text-white mb-[32px]"
+              class="text-[16px] font-bold text-primary 2xl:text-white mb-[16px] lg:mb-[32px]"
             >
               PGS.TS. Bác sĩ Ung bướu
             </div>
             <div
               id="sec5-desc"
-              class="text-[16px] font-[400] text-white max-w-[720px] mb-[30px]"
+              class="text-[16px] font-[400] text-secondary 2xl:text-white max-w-[720px] mb-[20px] lg:mb-[30px] text-justify lg:text-left leading-relaxed"
             >
               PGS.TS. Bác sĩ Nguyễn Trung Chính - Nguyên Chủ nhiệm khoa và phụ
               trách trung tâm tế bào gốc Bệnh viện TW Quân đội 108 là chuyên gia
@@ -641,30 +683,40 @@
               nước chẩn đoán và điều trị các vấn đề về ung bướu; thực hiện thành
               công nhiều kĩ thuật khó trong lĩnh vực tế bào gốc.
             </div>
-            <div class="flex justify-between">
+
+            <!-- NAV & PAGINATION -->
+            <div class="flex justify-between items-center pb-[30px] lg:pb-0">
               <div class="inline-flex gap-x-[16px]">
                 <div
                   id="sec5-btn-prev"
-                  class="w-[40px] h-[40px] cursor-pointer"
+                  class="w-[40px] h-[40px] cursor-pointer flex justify-center items-center rounded-full border-[2px] border-primary 2xl:border-none text-primary 2xl:text-white 2xl:bg-transparent hover:opacity-80 transition-opacity"
                 >
                   <img
                     src="assets/images/arrow-left-circle-section-5.png"
                     alt=""
+                    class="hidden 2xl:block w-full h-full"
                   />
+                  <i class="fa-solid fa-arrow-left 2xl:hidden"></i>
                 </div>
                 <div
                   id="sec5-btn-next"
-                  class="w-[40px] h-[40px] cursor-pointer"
+                  class="w-[40px] h-[40px] cursor-pointer flex justify-center items-center rounded-full border-[2px] border-primary 2xl:border-none text-primary 2xl:text-white 2xl:bg-transparent hover:opacity-80 transition-opacity"
                 >
                   <img
                     src="assets/images/arrow-right-circle-section-5.png"
                     alt=""
+                    class="hidden 2xl:block w-full h-full"
                   />
+                  <i class="fa-solid fa-arrow-right 2xl:hidden"></i>
                 </div>
               </div>
-              <div class="text-white font-[600]">
-                <span id="sec5-current-page" class="text-[30px]">1</span>
-                <span class="text-[30px]">/</span>
+              <div
+                class="text-primary 2xl:text-white font-[600] flex items-end gap-x-[4px]"
+              >
+                <span id="sec5-current-page" class="text-[30px] leading-none"
+                  >1</span
+                >
+                <span class="text-[20px] lg:text-[30px] leading-none">/</span>
                 <span class="text-[16px]">6</span>
               </div>
             </div>
@@ -672,7 +724,7 @@
         </div>
       </div>
       <img
-        class="absolute bottom-0 -z-10"
+        class="hidden 2xl:block absolute bottom-0 -z-10 w-full"
         src="assets/images/bg-section-5.png"
         alt=""
       />
