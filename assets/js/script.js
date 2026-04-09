@@ -389,22 +389,24 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const stage = document.querySelector("#section-2");
   if (!stage) return;
-  
+
   const ring = document.querySelector("#section-2 .ring");
   const imgs = document.querySelectorAll("#section-2 .img-3d");
   const prevBtn = document.getElementById("sec2-prev");
   const nextBtn = document.getElementById("sec2-next");
-  
+
   if (!ring || imgs.length === 0) return;
 
   const numImgs = imgs.length;
   const angle = 360 / numImgs;
-  
+
   // Calculate radius based on the actual width of the container
   const itemWidth = ring.offsetWidth;
   const gap = 40; // 40px gap between images
-  const radius = Math.round(((itemWidth + gap) / 2) / Math.tan(Math.PI / numImgs)); 
-  
+  const radius = Math.round(
+    (itemWidth + gap) / 2 / Math.tan(Math.PI / numImgs),
+  );
+
   gsap.set(ring, { rotationY: 0 });
 
   imgs.forEach((img, i) => {
@@ -412,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
       rotateY: i * -angle,
       transformOrigin: `50% 50% ${radius}px`,
       z: -radius,
-      backfaceVisibility: "hidden"
+      backfaceVisibility: "hidden",
     });
   });
 
@@ -434,20 +436,20 @@ document.addEventListener("DOMContentLoaded", function () {
     "assets/images/image2-section-2.png",
     "assets/images/image3-section-2.png",
     "assets/images/image4-section-2.png",
-    "assets/images/image5-section-2.png"
+    "assets/images/image5-section-2.png",
   ];
 
   imgs.forEach((img, i) => {
     gsap.set(img, {
       backgroundImage: `url(${imageUrls[i]})`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover'
+      backgroundPosition: "center",
+      backgroundSize: "cover",
     });
-    
+
     img.addEventListener("mouseenter", (e) => {
       let current = e.currentTarget;
       gsap.to(imgs, {
-        opacity: (idx, target) => (target === current ? 1 : 0.5),
+        opacity: (idx, target) => (target === current ? 1 : 1),
         ease: "power3",
       });
     });
@@ -456,9 +458,9 @@ document.addEventListener("DOMContentLoaded", function () {
       gsap.to(imgs, { opacity: 1, ease: "power2.inOut" });
     });
   });
-  
+
   let xPos = 0;
-  
+
   function dragStart(e) {
     if (e.touches && e.touches.length > 0) e.clientX = e.touches[0].clientX;
     else if (e.clientX === undefined) return;
@@ -473,7 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let clientX = e.clientX;
     if (e.touches && e.touches.length > 0) clientX = e.touches[0].clientX;
     if (clientX === undefined) return;
-    
+
     gsap.to(ring, {
       rotationY: "-=" + ((Math.round(clientX) - xPos) % 360),
     });
@@ -487,35 +489,37 @@ document.addEventListener("DOMContentLoaded", function () {
     document.removeEventListener("mouseup", dragEnd);
     document.removeEventListener("touchend", dragEnd);
   }
-  
+
   stage.addEventListener("mousedown", dragStart);
   stage.addEventListener("touchstart", dragStart);
 
-  if(prevBtn) {
-    prevBtn.addEventListener('click', () => {
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
       let currentRotation = gsap.getProperty(ring, "rotationY");
-      gsap.to(ring, { 
-        rotationY: currentRotation + angle, 
-        duration: 0.5
+      gsap.to(ring, {
+        rotationY: currentRotation + angle,
+        duration: 0.5,
       });
     });
   }
-  if(nextBtn) {
-    nextBtn.addEventListener('click', () => {
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
       let currentRotation = gsap.getProperty(ring, "rotationY");
-      gsap.to(ring, { 
-        rotationY: currentRotation - angle, 
-        duration: 0.5
+      gsap.to(ring, {
+        rotationY: currentRotation - angle,
+        duration: 0.5,
       });
     });
   }
-  
+
   // Re-adjust radius on window resize
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     const newItemWidth = ring.offsetWidth;
-    const newRadius = Math.round(((newItemWidth + gap) / 2) / Math.tan(Math.PI / numImgs)); 
-    
-    imgs.forEach(img => {
+    const newRadius = Math.round(
+      (newItemWidth + gap) / 2 / Math.tan(Math.PI / numImgs),
+    );
+
+    imgs.forEach((img) => {
       gsap.set(img, {
         transformOrigin: `50% 50% ${newRadius}px`,
         z: -newRadius,
