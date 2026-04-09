@@ -1,4 +1,4 @@
-AOS.init();
+// AOS.init();
 
 // Scroll Header
 window.addEventListener("scroll", function () {
