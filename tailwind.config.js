@@ -4,7 +4,7 @@ tailwind.config = {
       sm: "576px",
       md: "768px",
       lg: "992px",
-      xl: "1240px",
+      xl: "1408px",
       "2xl": "1408px",
     },
     extend: {
